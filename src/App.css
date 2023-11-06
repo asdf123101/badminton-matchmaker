@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.match {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  margin: auto;
+  padding: 3px;
+}
+.name {
+  text-decoration: underline;
+  flex: 3;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.vs {
+  color: #888;
+  font-size: 12px;
+}
