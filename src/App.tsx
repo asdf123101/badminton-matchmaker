@@ -59,15 +59,25 @@ function App() {
     );
   };
   const splitList = (list: string[]): string[] => {
-    const newList: string[] = list.flatMap((str) => str.split("&"));
+    const newList: string[] = list
+      .flatMap((str) => str.split("&"))
+      .map((i) => i.trim());
     return newList;
   };
   const generateMatch = (list: string[]) => {
     let newList = list.slice();
-    shuffleArray(newList);
-    if (list[0].includes("&")) {
-      newList = splitList(newList);
+    let isValidFixedDoubleMode = newList[0].includes("&");
+    // TODO: figure out a way to allow mixing & team and indiviuals
+    for (let i = 1; i < newList.length; ++i) {
+      if (isValidFixedDoubleMode !== newList[i].includes("&")) {
+        alert(
+          "Use & symbol to put two people in a team, all teams should contain two people."
+        );
+        return;
+      }
     }
+    shuffleArray(newList);
+    newList = splitList(newList);
     const newMatchList = matchList === null ? [] : matchList;
     newMatchList.push(["---"]);
     setMatchList(
